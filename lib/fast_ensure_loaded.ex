@@ -11,7 +11,7 @@ defmodule FastEnsureLoaded do
   def ensure_loaded(module) do
     module_list = FastGlobal.get(:fast_ensure_loaded) || []
 
-    if Enum.find(module_list, fn x -> x == module end) do
+    if Enum.member?(module_list, module) do
       :ok
     else
       load_and_store_module(module)
