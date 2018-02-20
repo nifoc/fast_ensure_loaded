@@ -1,11 +1,13 @@
 # FastEnsureLoaded
 
-**TODO: Add description**
+`Code.ensure_loaded/1` can become slow if you have lot's of modules (or just a few, benchmark shows that this module brings at least a ~2.5x performance increase).
+
+We call `Code.ensure_loaded/1` only after checking a list stored in [FastGlobal](https://github.com/discordapp/fastglobal).
+
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `fast_ensure_loaded` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `fast_ensure_loaded` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +17,8 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/fast_ensure_loaded](https://hexdocs.pm/fast_ensure_loaded).
+## Usage
 
+Replace all calls to `Code.ensure_loaded/1` with `FastEnsureLoaded.ensure_loaded/1`
+
+The docs can be found at [https://hexdocs.pm/fast_ensure_loaded](https://hexdocs.pm/fast_ensure_loaded).
