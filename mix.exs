@@ -38,7 +38,7 @@ defmodule FastEnsureLoaded.MixProject do
       # This option is only needed when you don't want to use the OTP application name
       name: "fast_ensure_loaded",
       # These are the default files included in the package
-      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Tim Buchwaldt"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/timbuchwaldt/fast_ensure_loaded"}
