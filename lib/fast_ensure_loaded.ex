@@ -1,15 +1,20 @@
 defmodule FastEnsureLoaded do
-  def ensure_loaded(module) do
-    case FastGlobal.get(:fast_ensure_loaded) do
-      nil ->
-        load_and_store_module(module)
+  @moduledoc """
+  A caching wrapper around `Code.ensure_loaded/1`
+  """
 
-      module_list ->
-        if Enum.find(module_list, fn x -> x == module end) do
-          :ok
-        else
-          load_and_store_module(module)
-        end
+  @doc """
+  Wraps `Code.ensure_loaded/1` with a check to FastGlobal.
+  If the Module hasn't been loaded it will be loaded as normal,
+  then the information is stored in a list in FastGlobal.
+  """
+  def ensure_loaded(module) do
+    module_list = FastGlobal.get(:fast_ensure_loaded) || []
+
+    if Enum.find(module_list, fn x -> x == module end) do
+      :ok
+    else
+      load_and_store_module(module)
     end
   end
 
